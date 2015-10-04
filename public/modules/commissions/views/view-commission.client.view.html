@@ -1,0 +1,19 @@
+<section data-ng-controller="CommissionsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="commission.name"></h1>
+
+		<div class="jumbotron">
+			<div class="container">
+				<p ng-model="commission.action"ta-bind></p>
+				</div>
+			</div>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == commission.user._id))">
+		<a class="btn btn-primary" href="/#!/commissions/{{commission._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+</section>

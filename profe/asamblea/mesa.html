@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.quilljs.com/0.20.0/quill.snow.css" />
+
+    <script src="//cdn.quilljs.com/0.20.0/quill.js"></script>
+    <style>
+        #editor{
+            border: 1px solid #ccc;
+        }
+        .lectura{
+            background-color: antiquewhite;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <!--<img alt="Brand" src="...">-->
+                        <!--<img alt="Brand" src="...">-->
+                    </a>
+                    <a class="navbar-brand" href="#">Mesa</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="index.html">Home</a></li>
+                        <li ><a href="administracion.html">Mesa Central</a></li>
+                        <li ><a href="javascript: cargarComision(1)">P. Familia</a></li>
+                        <li ><a href="javascript: cargarComision(2)">P. Juvenil</a></li>
+                        <li ><a href="javascript: cargarComision(3)">P. Laicos</a></li>
+                        <li ><a href="javascript: cargarComision(4)">P. Liturgia</a></li>
+                        <li ><a href="javascript: cargarComision(5)">P. Profética</a></li>
+                        <li ><a href="javascript: cargarComision(6)">P. Social</a></li>
+                        <li ><a href="javascript: cargarComision(7)">P. Ministerios</a></li>
+                        <li ><a href="javascript: cargarComision(8)">P. Comunicacion</a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </nav>
+<section>
+    <div class="row">
+        <div class="col-md-6 lectura">
+            <h2>Líneas de Acción</h2>
+            <h3>Objetivo</h3>
+            <div id="_objetivo"></div>
+            <h3>Estrategias y líneas de Acción</h3>
+            <div id="_estrategias"></div>
+            <h3>Validación</h3>
+            <div id="_validacion"></div>
+            <div class="anyipsum-output"><p>Bacon ipsum dolor amet ribeye t-bone flank spare ribs, cow frankfurter ground round tri-tip swine corned beef salami.  Ham rump tongue swine ball tip picanha meatball bresaola brisket capicola pork belly biltong bacon shoulder alcatra.  Biltong corned beef prosciutto sirloin rump pastrami doner strip steak porchetta pork loin hamburger fatback meatball.  Bresaola chicken ribeye tail andouille tri-tip pork belly pork loin.  Turducken ribeye rump shank porchetta alcatra t-bone tenderloin landjaeger biltong capicola sausage.  Rump shoulder pork loin flank meatloaf frankfurter tongue meatball short loin filet mignon tri-tip venison beef ribs cow doner.  Meatball prosciutto corned beef andouille boudin sirloin ball tip capicola tail.</p><p>Tenderloin pancetta turkey ham venison, ground round biltong pastrami tri-tip tail jowl chicken doner pork belly short ribs.  Short ribs chuck capicola tri-tip meatball beef short loin ground round sirloin jerky.  Ground round chuck porchetta pork chop.  Tri-tip venison beef t-bone, pork chop doner ham rump kielbasa short ribs strip steak filet mignon boudin.  Filet mignon short ribs pancetta shank.  Ground round doner beef ribs hamburger, fatback pork cupim sirloin cow beef.</p><p>Ball tip jerky doner cow chuck, capicola bacon.  Pork loin filet mignon corned beef picanha brisket drumstick shankle doner, tri-tip boudin cupim meatball flank t-bone hamburger.  Tenderloin ground round brisket tongue, beef cupim pastrami kevin corned beef bacon meatloaf short loin venison ham hock pork chop.  Pancetta spare ribs drumstick kielbasa pastrami, boudin tail prosciutto jerky alcatra beef.  Tri-tip brisket pig, leberkas chuck picanha landjaeger bacon meatball spare ribs bresaola.  Porchetta pork ball tip, beef meatloaf short ribs flank chuck fatback pork chop.  Porchetta leberkas boudin jerky jowl.</p><p>Corned beef tenderloin chicken, sirloin drumstick doner beef short ribs.  Frankfurter swine ham hock tail strip steak picanha porchetta alcatra kevin pancetta.  Salami pork chop rump cow leberkas bresaola swine turducken pastrami meatloaf short ribs landjaeger jowl porchetta ball tip.  Pork belly beef ribs pork loin tri-tip, frankfurter tenderloin venison.  Corned beef andouille hamburger, boudin beef ribs frankfurter fatback filet mignon salami chuck kielbasa tail.  Spare ribs jowl bacon short ribs swine picanha.</p><p>Tail hamburger sausage pork belly, ham t-bone tongue beef ribs biltong.  Kielbasa spare ribs turducken venison tail ribeye ground round.  Pancetta chicken filet mignon cupim fatback boudin meatloaf kevin shankle bresaola sausage shoulder tenderloin alcatra porchetta.  Jerky sausage kevin, hamburger fatback shankle pork.  Landjaeger short loin salami shankle jerky, tenderloin ground round.</p></div>
+        </div>
+        <div class="col-md-6">
+            <input type="hidden" id="id_comision">
+            <h2>Sugerencias para la comisión <span id="nombre_comision"></span></h2>
+
+            <div id="toolbar">
+                <button class="ql-format-button ql-bullet"></button>
+            </div>
+
+            <div id="editor">
+                <div>Aquí van las sugerencias</div>
+                <div><br></div>
+            </div>
+            <p>Último guardado: <span id="last_saved"></span></p>
+            <button class="btn btn-primary" onclick="guardarComision()">Guardar</button>
+            <button class="btn" onclick="enviar()">Enviar</button>
+        </div>
+    </div>
+</section>
+<script>
+    var quill;
+    var comisiones = ['', 'Familia', 'Juvenil', 'Laicos', 'Liturgia', 'Profética', 'Social',
+        'Ministerios', 'Comunicacion'];
+
+    $(document).ready(function() {
+        var configs = {
+            theme: 'snow'
+        };
+        quill = new Quill('#editor', configs);
+        quill.addModule('toolbar', { container: '#toolbar' });
+
+        var windowHeightMinusNav = $(window).height() - 100;
+        $('.lectura').css('height', windowHeightMinusNav);
+    });
+
+    $(window).resize(function() {
+        var windowHeightMinusNav = $(window).height() - 100;
+        $('.lectura').css('height', windowHeightMinusNav);
+    });
+
+    function cargarComision(numero){
+        $('#id_comision').val(numero);
+        $('#nombre_comision').html(comisiones[numero]);
+
+        var sugerencia = localStorage.getItem("html_sugerencias" + numero);
+        var fecha = localStorage.getItem("date_sugerencias" + numero);
+        //console.log(sugerencia.html);
+
+        if ((sugerencia == null) || (sugerencia == "")){
+
+            quill.setHTML('<div></div>');
+            $('#last_saved').html("no disponible")
+        }else{
+            quill.setHTML(sugerencia);
+            $('#last_saved').html(fecha)
+        }
+
+    }
+    function guardarComision(){
+        if(typeof(Storage) !== "undefined") {
+
+        } else {
+            alert("Navegador No compatible");
+        }
+        var id_comision = $('#id_comision').val();
+        if (id_comision ===""){
+            alert("No has seleccionado comision");
+        }
+        var html = quill.getHTML();
+        var date = Date();
+        localStorage.setItem("html_sugerencias" + id_comision, html);
+        localStorage.setItem("date_sugerencias" + id_comision, date);
+        $('#last_saved').html(date)
+        console.log(html);
+    }
+</script>
+</body>
+</html>
