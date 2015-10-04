@@ -1,10 +1,53 @@
-<section data-ng-controller="HomeController">
-	<div class="jumbotron text-center">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-				<img alt="MEAN.JS" class="img-responsive text-center" src="modules/core/img/brand/logo.png" />
-			</div>
+<section data-ng-controller="HomeController" ng-init="find()">
+	<div class="row&&ok">
+		<br>
+		<div collapse="table&&ok"class="form-group col-md-12">
+			<label class="col-md-1 col-md-offset-1" for="mesa">Numero de mesa </label>
+			<input ng-model="table"class="col-md-10"type="number" class="form-control" id="mesa"
+			placeholder="Numero de mesa">
+			<buton ng-click="ok=true"class="btn btn-default">Ok</buton>
+		</div>
+	</div>
+		<div ng-show="table&&ok" class="row">
+			<h3 class="pull-right">Mesa #{{table}}</h3>
+			<tabset justified="true">
+					<tab ng-show="false"heading="hide">
+					</tab>
+			    <tab ng-repeat="commission in commissions" ng-click="findOne(commission._id)" heading="{{commission.name}}">
+						<div ng-show="!exists" class="row">
+								<div ng-model="commission.action" ta-bind class="col-md-6 lectura">
+								</div>
+								<div class="col-md-6">
+										<h2>Sugerencias para la comisión <span id="nombre_comision"></span></h2>
+										<div class="form-group">
+									    <label for="">Sugerencias</label>
+									    <input ng-model="suggestions" type="text" class="form-control" id=""
+									           placeholder="Sugerencias">
+									  </div>
+										<div ng-show="error"class="alert alert-danger">{{error}}</div>
+										<div ng-show="success"class="alert alert-success">Guardado!</div>
+										<p>Último guardado: <span id="last_saved"></span></p>
+										<button class="btn btn-primary" ng-click="createSuggestion(commission._id,table,suggestions)">Guardar</button>
+								</div>
+						</div>
+						<div ng-show="exists" class="row">
+								<div ng-model="commission.action" ta-bind class="col-md-6 lectura">
+								</div>
+								<div class="col-md-6">
+										<h2>Sugerencias para la comisión <span id="nombre_comision"></span></h2>
+										<div class="form-group">
+											<label for="">Sugerencias</label>
+											<input ng-model="suggestion.suggestions" type="text" class="form-control" id=""
+														 placeholder="Sugerencias">
+										</div>
+										<div ng-show="error"class="alert alert-danger">{{error}}</div>
+										<div ng-show="success"class="alert alert-success">Guardado!</div>
+										<p>Último guardado: <span id="last_saved"></span></p>
+										<button class="btn btn-primary" ng-click="suggestionUpdate()">Guardar</button>
+								</div>
+						</div>
+					</tab>
+			</tabset>
 		</div>
 		<br>
-	</div>
 </section>

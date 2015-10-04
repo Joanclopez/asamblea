@@ -1,3 +1,4 @@
+
 .content {
 	margin-top: 50px;
 }
@@ -12,4 +13,13 @@
 }
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
+}
+#editor{
+		border: 1px solid #ccc;
+}
+.lectura{
+		padding-left: 35px;
+		background-color: antiquewhite;
+		overflow-y: scroll;
+		height: 550px!important;
 }
