@@ -7,12 +7,12 @@ module.exports = function(app) {
 	// Commissions Routes
 	app.route('/commissions')
 		.get(commissions.list)
-		.post(users.requiresLogin, commissions.create);
+		.post(users.requiresLogin,users.hasAuthorization(['admin']) ,commissions.create);
 
 	app.route('/commissions/:commissionId')
 		.get(commissions.read)
-		.put(users.requiresLogin, commissions.hasAuthorization, commissions.update)
-		.delete(users.requiresLogin, commissions.hasAuthorization, commissions.delete);
+		.put(users.requiresLogin, users.hasAuthorization(['admin']), commissions.update)
+		.delete(users.requiresLogin, users.hasAuthorization(['admin']), commissions.delete);
 
 	// Finish by binding the Commission middleware
 	app.param('commissionId', commissions.commissionByID);
