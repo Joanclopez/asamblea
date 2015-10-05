@@ -1,10 +1,14 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Commissions','Suggestions','$http',
-	function($scope, Authentication,Commissions,Suggestions,$http) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'Commissions','Suggestions','$http','$rootScope',
+	function($scope, Authentication,Commissions,Suggestions,$http,$rootScope) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+		$rootScope.toolbar = [
+								['h2', 'h3', 'p', 'bold', 'underline','html', 'redo','insertLink', 'insertVideo', 'undo', 'italics', 'ul', 'ol', 'insertImage', 'justifyLeft', 'justifyCenter', 'justifyRight', 'clear','wordcount', 'charcount']
+						];
+
 
 		// Find a list of Commissions
 		$scope.find = function() {
