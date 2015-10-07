@@ -1,0 +1,20 @@
+<section data-ng-controller="SuggestionsController" data-ng-init="findCommissions();">
+  <tabset justified="true">
+      <tab ng-show="false"heading="hide">
+      </tab>
+      <tab ng-repeat="commission in commissions" heading="{{commission.name}}">
+        <div class="col-md-6 col-sm-6 col-lg-6">
+          <accordion close-others="true">
+            <accordion-group ng-show="commission._id===suggestion.commission"data-ng-repeat="suggestion in suggestions" heading="Mesa #{{suggestion.table}}" >
+              <div ng-model="suggestion.suggestions" ta-bind>
+
+              </div>
+            </accordion-group>
+          </accordion>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+
+        </div>
+      </tab>
+  </tabset>
+</section>
