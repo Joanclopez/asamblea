@@ -15,41 +15,36 @@ angular.module('suggestions').controller('SuggestionsController', ['$scope','$ro
 				$scope.findSuggestions();
 			});
 		};
-		// Create new Suggestion
-		$scope.create = function() {
-			// Create new Suggestion object
-			var suggestion = new Suggestions ({
-				name: this.name,
-				action: this.action
-			});
 
-			// Redirect after save
-			suggestion.$save(function(response) {
-				$location.path('suggestions/' + response._id);
 
-				// Clear form fields
-				$scope.name = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
 
-		// Remove existing Suggestion
-		$scope.remove = function(suggestion) {
-			if ( suggestion ) {
-				suggestion.$remove();
 
-				for (var i in $scope.suggestions) {
-					if ($scope.suggestions [i] === suggestion) {
-						$scope.suggestions.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.suggestion.$remove(function() {
-					$location.path('suggestions');
-				});
+    // Add a suggestion to the list
+     $scope.addGeneralSuggestion = function (generalSuggestions,text) {
+			// 	console.log('entro');
+			if (!generalSuggestions) {
+				generalSuggestions=[];
 			}
-		};
+       generalSuggestions.push({
+           suggestion: text,
+           number: 0
+       });
+     };
+
+		 $scope.sum=function(suggestion){
+			//  console.log(suggestion);
+			 suggestion.number=suggestion.number+1;
+			//  console.log(suggestion);
+		 };
+		 $scope.substraction=function(suggestion){
+			//  console.log(suggestion);
+			 suggestion.number=suggestion.number-1;
+		 };
+
+		 $scope.deleteSuggestion=function(suggestion, commission){
+			//  console.log(commission.suggestions.indexOf(suggestion));
+			 commission.suggestions.splice(commission.suggestions.indexOf(suggestion),1);
+		 };
 
 		// Update existing Suggestion
 		$scope.update = function() {
@@ -71,6 +66,18 @@ angular.module('suggestions').controller('SuggestionsController', ['$scope','$ro
 		$scope.findOne = function() {
 			$scope.suggestion = Suggestions.get({
 				suggestionId: $stateParams.suggestionId
+			});
+		};
+
+		// Update existing Commission
+		$scope.commissionUpdate = function(commission) {
+
+			Commissions.update({
+				commissionId: commission._id
+			},commission,function() {
+				// $location.path('commissions/' + commission._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
 			});
 		};
 	}

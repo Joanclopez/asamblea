@@ -14,6 +14,25 @@
         </div>
         <div class="col-md-6 col-sm-6 col-lg-6">
 
+          <table class="table table-bordered table-striped">
+            <tbody>
+              <tr ng-repeat="suggestion in commission.suggestions">
+                <td><button ng-click="deleteSuggestion(suggestion,commission)" class="btn btn-default">-</button></td>
+                <td>{{suggestion.number}}</td>
+                <td>{{suggestion.suggestion}}</td>
+                <td><button ng-click="sum(suggestion)"class="btn btn-success">+</button><button ng-click="substraction(suggestion)" class="btn btn-danger">-</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="form-group col-md-12">
+            <label class="col-md-2 control-label">Agregar</label>
+            <div class="col-md-9">
+              <input type="text" ng-model="text" class="form-control" id="add-suggestion"
+              placeholder="Sugerencia">
+            </div>
+            <button ng-click="addGeneralSuggestion(commission.suggestions,text);text=''" class="col-md-1 btn btn-success">+</button>
+          </div>
+          <button ng-click="commissionUpdate(commission)" class="btn btn-default">Guardar</button>
         </div>
       </tab>
   </tabset>

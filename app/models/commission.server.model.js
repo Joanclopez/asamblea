@@ -27,7 +27,8 @@ var CommissionSchema = new Schema({
 		default: Date.now
 	},
 	suggestions:{
-		type:Object
+		type:Object,
+		default:[]
 	},
 	user: {
 		type: Schema.ObjectId,
